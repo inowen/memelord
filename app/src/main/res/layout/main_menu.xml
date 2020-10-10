@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <Button
+        android:id="@+id/send_memes_btn"
+        android:layout_width="299dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="156dp"
+        android:text="SEND MEMES"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/suggestions_btn"
+        android:layout_width="298dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:text="Suggestions"
+        app:layout_constraintStart_toStartOf="@+id/send_memes_btn"
+        app:layout_constraintTop_toBottomOf="@+id/send_memes_btn" />
+
+    <Button
+        android:id="@+id/favorites_btn"
+        android:layout_width="293dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="Favorites"
+        app:layout_constraintStart_toStartOf="@+id/suggestions_btn"
+        app:layout_constraintTop_toBottomOf="@+id/suggestions_btn" />
+
+    <Button
+        android:id="@+id/premade_requests_btn"
+        android:layout_width="293dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:text="Premade Requests"
+        app:layout_constraintStart_toStartOf="@+id/favorites_btn"
+        app:layout_constraintTop_toBottomOf="@+id/favorites_btn" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="91dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

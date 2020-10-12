@@ -11,6 +11,7 @@ public class MainMenu extends AppCompatActivity {
 
     private Button suggestionsButton;
     private Button favoritesButton;
+    private Button settingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainMenu extends AppCompatActivity {
         });
 
         // Make Favorites button to show favorites screen
+        favoritesButton = findViewById(R.id.favorites_btn);
         favoritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +38,15 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        // 
+        // Make settings button show settings screen
+        settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

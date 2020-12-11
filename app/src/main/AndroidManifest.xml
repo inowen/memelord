@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".FavoritesActivity" />
         <activity
             android:name=".SuggestionsActivity"
             android:label="@string/title_activity_suggestions"

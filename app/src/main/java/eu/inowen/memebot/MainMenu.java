@@ -28,15 +28,6 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        // Make Favorites button to show favorites screen
-        favoritesButton = findViewById(R.id.favorites_btn);
-        favoritesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
-                startActivity(intent);
-            }
-        });
 
         // Make settings button show settings screen
         settingsButton = findViewById(R.id.settings_button);

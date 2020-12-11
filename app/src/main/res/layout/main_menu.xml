@@ -8,42 +8,22 @@
 
     <Button
         android:id="@+id/send_memes_btn"
-        android:layout_width="299dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="152dp"
+        android:layout_width="301dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="104dp"
         android:text="SEND MEMES"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/suggestions_btn"
-        android:layout_width="298dp"
+        android:layout_width="303dp"
         android:layout_height="61dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text="Suggestions"
         app:layout_constraintStart_toStartOf="@+id/send_memes_btn"
         app:layout_constraintTop_toBottomOf="@+id/send_memes_btn" />
-
-    <Button
-        android:id="@+id/favorites_btn"
-        android:layout_width="293dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        android:text="Favorites"
-        app:layout_constraintStart_toStartOf="@+id/suggestions_btn"
-        app:layout_constraintTop_toBottomOf="@+id/suggestions_btn" />
-
-    <Button
-        android:id="@+id/premade_requests_btn"
-        android:layout_width="293dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="16dp"
-        android:text="Premade Requests"
-        app:layout_constraintStart_toStartOf="@+id/favorites_btn"
-        app:layout_constraintTop_toBottomOf="@+id/favorites_btn" />
 
     <Button
         android:id="@+id/settings_button"
@@ -52,6 +32,28 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="MemebotLogo here"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="428dp"
+        android:text="Here a dropdown (scroll?) with premade options buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,6 @@ import android.widget.Button;
 public class MainMenu extends AppCompatActivity {
 
     private Button suggestionsButton;
-    private Button favoritesButton;
     private Button settingsButton;
 
     @Override

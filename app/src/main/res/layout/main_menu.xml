@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenu">
+    tools:context=".MainMenu"
+    android:background="@drawable/main_screen_bg"
+    >
 
     <Button
         android:id="@+id/send_memes_btn"
@@ -14,7 +16,7 @@
         android:layout_marginTop="20dp"
         android:text="SEND MEMES"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/memeapp" />
 
     <Button
         android:id="@+id/suggestions_btn"
@@ -33,7 +35,9 @@
         android:layout_marginBottom="16dp"
         android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -46,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/memeapp"
         android:layout_width="279dp"
         android:layout_height="102dp"
         android:layout_marginStart="64dp"

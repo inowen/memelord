@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -37,6 +38,9 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageView logo = findViewById(R.id.memeapp);
+        logo.setImageDrawable(getDrawable(R.drawable.main_screen_bg));
 
     }
 }

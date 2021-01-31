@@ -1,8 +1,10 @@
-package eu.inowen.memebot;
+package eu.inowen.app.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import eu.inowen.app.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

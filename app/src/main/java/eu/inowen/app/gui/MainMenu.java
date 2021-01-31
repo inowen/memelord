@@ -1,4 +1,4 @@
-package eu.inowen.memebot;
+package eu.inowen.app.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import eu.inowen.app.R;
 
 public class MainMenu extends AppCompatActivity {
 

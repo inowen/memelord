@@ -20,27 +20,5 @@ public class TestingActivity extends AppCompatActivity {
         String url = "https://i.redd.it/vssspzxvdue61.jpg";
         ImageDownloader downloader = new ImageDownloader(url, "data/data/eu.inowen.memebot/cache");
 
-        Test test = new Test(downloader);
-        Thread t = new Thread(test);
-        while (test.getResponse() == "") { }
-        testDisplay.setText("Download response: " + test.getResponse());
-
     }
-}
-
-class Test implements Runnable {
-
-    private ImageDownloader imageDownloader;
-    private String response = "";
-
-    public Test(ImageDownloader im) {
-        imageDownloader = im;
-    }
-
-    @Override
-    public void run() {
-        response = imageDownloader.download();
-    }
-
-    public String getResponse() { return response; }
 }

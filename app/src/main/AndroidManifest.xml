@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="eu.inowen.app.gui.SettingsActivity"></activity>
+        <activity android:name=".testing.TestingActivity"></activity>
+        <activity android:name=".gui.SettingsActivity" />
         <activity
-            android:name="eu.inowen.app.gui.SuggestionsActivity"
+            android:name=".gui.SuggestionsActivity"
             android:label="@string/title_activity_suggestions"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="eu.inowen.app.gui.MainMenu">
+        <activity android:name=".gui.MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

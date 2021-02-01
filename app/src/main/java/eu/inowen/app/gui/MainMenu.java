@@ -9,11 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import eu.inowen.app.R;
+import eu.inowen.app.testing.TestingActivity;
 
 public class MainMenu extends AppCompatActivity {
 
     private Button suggestionsButton;
     private Button settingsButton;
+    private Button goTestPageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,16 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Bind the button that leads to the testing screen
+        goTestPageButton = findViewById(R.id.testButton);
+        goTestPageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TestingActivity.class);
                 startActivity(intent);
             }
         });

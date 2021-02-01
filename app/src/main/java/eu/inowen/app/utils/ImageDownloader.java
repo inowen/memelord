@@ -33,10 +33,10 @@ public class ImageDownloader {
      * @return Extension
      */
     public String getExtension(String url) {
-        String[] split = url.split(".");
+        String[] split = url.split("\\.");
         int length = split.length;
         if (length > 1) {
-            return split[length-1];
+            return "." + split[length-1];
         }
         return "";
     }
@@ -44,7 +44,7 @@ public class ImageDownloader {
     public String extractIdentifier(String url) {
         String[] split = url.split("/");
         if (split.length > 1) {
-            return url.split(".")[0];
+            return split[split.length-1].split("\\.")[0];
         }
         return "";
     }

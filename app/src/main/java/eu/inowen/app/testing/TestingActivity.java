@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import eu.inowen.app.R;
 import eu.inowen.app.utils.ImageDownloader;
 
@@ -17,8 +22,24 @@ public class TestingActivity extends AppCompatActivity {
 
         TextView testDisplay = findViewById(R.id.testDisplay);
 
-        String url = "https://i.redd.it/vssspzxvdue61.jpg";
-        ImageDownloader downloader = new ImageDownloader(url, "data/data/eu.inowen.memebot/cache");
+        File file = new File(getApplicationContext().getCacheDir(), "hey.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        testDisplay.setText(file.getAbsolutePath());
 
     }
+}
+
+
+class Downloader implements Runnable {
+
+    @Override
+    public void run() {
+
+    }
+
+    
 }

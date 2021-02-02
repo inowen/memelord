@@ -5,7 +5,9 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -19,7 +21,7 @@ public class ImageDownloader {
     /**
      * Initialize the destination where the image is downloaded to, add extension, etc
      * @param url The URL where the image is located on the internet
-     * @param pathToFolder Folder where the image is supposed to end up
+     * @param destinationFolder Folder where the image is supposed to end up
      */
     public ImageDownloader(String url, File destinationFolder) {
         urlStr = url;
@@ -29,9 +31,27 @@ public class ImageDownloader {
 
     /**
      * Download the image
+     * @throws IOException
      * @return Path to the name of the image in the filesystem
      */
-    public String download() {
+    public String download() throws IOException {
+        URL url = new URL(urlStr);
+        BufferedInputStream in = new BufferedInputStream(url.openStream());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        // Write everything in the input stream to the output stream
+        int n; byte[] buf = new byte[1024];
+        while(-1!=(n=in.read()))
+            out.write(buf, 0, n);
+        in.close();
+        byte[] imageByteArray = out.toByteArray();
+        out.close();
+
+        // Write to the destination file
+        destination.createNewFile();
+        FileOutputStream fos = new FileOutputStream(destination);
+        fos.write(imageByteArray);
+
         return destination.getAbsolutePath();
     }
 

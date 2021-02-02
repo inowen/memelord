@@ -30,6 +30,15 @@ public class ImageDownloader {
     }
 
     /**
+     * By default the name for the file to which the image is downloaded is taken
+     * from the url. This changes that name.
+     * @param newName
+     */
+    public void setName(String newName) {
+        destination = new File(destination.getParentFile(), newName);
+    }
+
+    /**
      * Download the image
      * @throws IOException
      * @return Path to the name of the image in the filesystem

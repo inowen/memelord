@@ -2,6 +2,7 @@ package eu.inowen.app.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -20,26 +21,17 @@ public class TestingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing);
 
-        TextView testDisplay = findViewById(R.id.testDisplay);
+        // Text on the testing activity to show whatever debug message there is to show
+        final TextView testDisplay = findViewById(R.id.testDisplay);
+        final String displayThis = "Tomato here from the other thread!";
 
-        File file = new File(getApplicationContext().getCacheDir(), "hey.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        testDisplay.setText(file.getAbsolutePath());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                testDisplay.setText(displayThis);
+            }
+        }).start();
 
     }
 }
 
-
-class Downloader implements Runnable {
-
-    @Override
-    public void run() {
-
-    }
-
-    
-}

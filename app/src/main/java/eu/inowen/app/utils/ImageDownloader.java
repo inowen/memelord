@@ -48,11 +48,11 @@ public class ImageDownloader {
 
         // Write everything in the input stream to the output stream
         int n; byte[] buf = new byte[1024];
-        while(-1!=(n=in.read()))
+        while(-1!=(n=in.read(buf)))
             out.write(buf, 0, n);
         in.close();
-        byte[] imageByteArray = out.toByteArray();
         out.close();
+        byte[] imageByteArray = out.toByteArray();
 
         // Write to the destination file
         destination.createNewFile();

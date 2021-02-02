@@ -3,6 +3,7 @@ package eu.inowen.app.utils;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
@@ -13,16 +14,17 @@ import java.net.URL;
 public class ImageDownloader {
 
     private String urlStr;
-    private String destination;
+    private File destination;
 
     /**
      * Initialize the destination where the image is downloaded to, add extension, etc
      * @param url The URL where the image is located on the internet
      * @param pathToFolder Folder where the image is supposed to end up
      */
-    public ImageDownloader(String url, String pathToFolder) {
+    public ImageDownloader(String url, File destinationFolder) {
         urlStr = url;
-        destination = pathToFolder + "/" + extractIdentifier(url) + getExtension(url);
+        String fileName = extractIdentifier(url) + getExtension(url);
+        destination = new File(destinationFolder, fileName);
     }
 
     /**
@@ -30,7 +32,7 @@ public class ImageDownloader {
      * @return Path to the name of the image in the filesystem
      */
     public String download() {
-        return destination;
+        return destination.getAbsolutePath();
     }
 
     /**

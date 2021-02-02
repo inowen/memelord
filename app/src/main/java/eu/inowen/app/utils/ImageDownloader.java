@@ -58,6 +58,7 @@ public class ImageDownloader {
         destination.createNewFile();
         FileOutputStream fos = new FileOutputStream(destination);
         fos.write(imageByteArray);
+        fos.close();
 
         return destination.getAbsolutePath();
     }

@@ -23,12 +23,30 @@ public class TestingActivity extends AppCompatActivity {
 
         // Text on the testing activity to show whatever debug message there is to show
         final TextView testDisplay = findViewById(R.id.testDisplay);
-        final String displayThis = "Tomato here from the other thread!";
+        final String displayThis = "From my own findViewById!";
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                testDisplay.setText(displayThis);
+                String url = "https://i.redd.it/iyajyqjmg0f61.jpg";
+                ImageDownloader downloader = new ImageDownloader(url, getApplicationContext().getCacheDir());
+                try {
+                    downloader.download();
+                } catch (IOException e) {
+                    testDisplay.setText("Exception from download.");
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        testDisplay.setText("Done, image was downloaded.");
+                    }
+                });
             }
         }).start();
 

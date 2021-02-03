@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Iterator to page through a certain subreddit (Reddit).
+ * Iterator to page through a certain subreddit (Reddit) using the api.
  */
 public class SubredditPageIterator {
 

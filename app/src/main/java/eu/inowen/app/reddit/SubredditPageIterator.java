@@ -56,7 +56,7 @@ public class SubredditPageIterator {
     public ArrayList<JSONObject> nextPage() {
         ArrayList<JSONObject> page = new ArrayList<>();
         // If it's at the last page, return an empty page.
-        if (this.hasNext()) {
+        if (!this.hasNext()) {
             return page;
         }
 
@@ -126,7 +126,7 @@ public class SubredditPageIterator {
      * @return boolean
      */
     public boolean hasNext() {
-        return (!afterInitiated || nextAfter==null);
+        return (!afterInitiated || nextAfter!=null);
     }
 
     private String getFormattedURLString() {

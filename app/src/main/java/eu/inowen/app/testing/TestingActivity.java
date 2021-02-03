@@ -31,11 +31,12 @@ public class TestingActivity extends AppCompatActivity {
                 SubredditPageIterator pageIterator = new SubredditPageIterator("memes", 5, Category.HOT);
                 int numPage = 0;
                 while(pageIterator.hasNext()) {
-                    try {  Thread.sleep(4000); } catch (InterruptedException e) { e.printStackTrace(); }
                     System.out.println("Next page (number " + numPage + ")");
                     numPage++;
 
                     ArrayList<JSONObject> currentPage = pageIterator.nextPage();
+                    System.out.println("Current page size: " + currentPage.size());
+
                     for (JSONObject post : currentPage) {
                         String title = "";
                         try {
@@ -45,12 +46,9 @@ public class TestingActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     testDisplay.setText(finalTitle);
-                                    try {
-                                        Thread.sleep(2000);
-                                    }
-                                    catch (InterruptedException e) { e.printStackTrace(); }
                                 }
                             });
+                            try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
                         }
                         catch(final JSONException e) {
                             runOnUiThread(new Runnable() {
@@ -62,6 +60,8 @@ public class TestingActivity extends AppCompatActivity {
                         }
                     }
                 }
+
+                testDisplay.setText("Done, no more on memes");
             }
         }).start();
 

@@ -91,6 +91,7 @@ public class SubredditPageIterator {
         try {
             Scanner scanner = new Scanner(connection.getInputStream());
             while(scanner.hasNext()) { connectionContent += scanner.nextLine(); }
+            scanner.close();
         }
         catch (IOException e) { e.printStackTrace(); }
 

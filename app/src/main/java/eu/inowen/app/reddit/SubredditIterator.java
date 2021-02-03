@@ -40,7 +40,7 @@ public class SubredditIterator {
      * @return boolean
      */
     public boolean hasNext() {
-        return (!pageIterator.hasNext() && index>=currentPage.size()-1);
+        return !(!pageIterator.hasNext() && index>=currentPage.size()-1);
     }
 
     /**

@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import eu.inowen.app.R;
-import eu.inowen.app.reddit.SubredditPageIterator;
+import eu.inowen.app.reddit.SubredditIterator;
 import eu.inowen.app.reddit.SubredditPageIterator.*;
 
 public class TestingActivity extends AppCompatActivity {
@@ -28,39 +28,19 @@ public class TestingActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SubredditPageIterator pageIterator = new SubredditPageIterator("memes", 5, Category.RISING);
-                int numPage = 0;
-                while(pageIterator.hasNext()) {
-                    ArrayList<JSONObject> currentPage = pageIterator.nextPage();
-
-                    for (JSONObject post : currentPage) {
-                        String title = "";
-                        try {
-                            title = post.getString("title");
-                            final String finalTitle = title;
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    testDisplay.setText(finalTitle);
-                                }
-                            });
-                            try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
+                SubredditIterator subredditIterator = new SubredditIterator("memes", 5, Category.HOT);
+                while(subredditIterator.hasNext()) {
+                    final String title = subredditIterator.nextTitle();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            testDisplay.setText(title);
                         }
-                        catch(final JSONException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    testDisplay.setText(e.toString());
-                                }
-                            });
-                        }
-                    }
+                    });
+                    try { Thread.sleep(1000); } catch(InterruptedException e) { e.printStackTrace(); }
                 }
-
-                testDisplay.setText("Done, no more on memes");
             }
         }).start();
-
     }
 }
 

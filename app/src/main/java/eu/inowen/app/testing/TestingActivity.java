@@ -2,17 +2,18 @@ package eu.inowen.app.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import eu.inowen.app.R;
-import eu.inowen.app.utils.ImageDownloader;
+import eu.inowen.app.reddit.SubredditPageIterator;
+import eu.inowen.app.reddit.SubredditPageIterator.*;
 
 public class TestingActivity extends AppCompatActivity {
 
@@ -23,9 +24,46 @@ public class TestingActivity extends AppCompatActivity {
 
         // Text on the testing activity to show whatever debug message there is to show
         final TextView testDisplay = findViewById(R.id.testDisplay);
-        final String displayThis = "From my own findViewById!";
 
-        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SubredditPageIterator pageIterator = new SubredditPageIterator("memes", 5, Category.HOT);
+                int numPage = 0;
+                while(pageIterator.hasNext()) {
+                    try {  Thread.sleep(4000); } catch (InterruptedException e) { e.printStackTrace(); }
+                    System.out.println("Next page (number " + numPage + ")");
+                    numPage++;
+
+                    ArrayList<JSONObject> currentPage = pageIterator.nextPage();
+                    for (JSONObject post : currentPage) {
+                        String title = "";
+                        try {
+                            title = post.getString("title");
+                            final String finalTitle = title;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    testDisplay.setText(finalTitle);
+                                    try {
+                                        Thread.sleep(2000);
+                                    }
+                                    catch (InterruptedException e) { e.printStackTrace(); }
+                                }
+                            });
+                        }
+                        catch(final JSONException e) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    testDisplay.setText(e.toString());
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }).start();
 
     }
 }

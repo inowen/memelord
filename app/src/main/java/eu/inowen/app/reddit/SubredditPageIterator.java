@@ -103,7 +103,10 @@ public class SubredditPageIterator {
 
         // Set nextPage again for the next advancement
         try {
-            nextAfter = pageJson.getJSONObject("data").getString("after");
+            if (pageJson.getJSONObject("data").isNull("after"))
+                nextAfter = null;
+            else
+                nextAfter = pageJson.getJSONObject("data").getString("after");
         }
         catch (JSONException e) { e.printStackTrace(); }
         afterInitiated = true;

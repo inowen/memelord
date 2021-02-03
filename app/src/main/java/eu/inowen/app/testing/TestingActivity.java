@@ -28,14 +28,10 @@ public class TestingActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SubredditPageIterator pageIterator = new SubredditPageIterator("memes", 5, Category.HOT);
+                SubredditPageIterator pageIterator = new SubredditPageIterator("memes", 5, Category.RISING);
                 int numPage = 0;
                 while(pageIterator.hasNext()) {
-                    System.out.println("Next page (number " + numPage + ")");
-                    numPage++;
-
                     ArrayList<JSONObject> currentPage = pageIterator.nextPage();
-                    System.out.println("Current page size: " + currentPage.size());
 
                     for (JSONObject post : currentPage) {
                         String title = "";

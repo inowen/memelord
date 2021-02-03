@@ -25,30 +25,7 @@ public class TestingActivity extends AppCompatActivity {
         final TextView testDisplay = findViewById(R.id.testDisplay);
         final String displayThis = "From my own findViewById!";
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String url = "https://i.redd.it/iyajyqjmg0f61.jpg";
-                ImageDownloader downloader = new ImageDownloader(url, getApplicationContext().getCacheDir());
-                try {
-                    downloader.download();
-                } catch (IOException e) {
-                    testDisplay.setText("Exception from download.");
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        testDisplay.setText("Done, image was downloaded.");
-                    }
-                });
-            }
-        }).start();
+        
 
     }
 }

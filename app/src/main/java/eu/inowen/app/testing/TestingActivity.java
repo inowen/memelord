@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,6 +23,8 @@ public class TestingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing);
+
+
 
         // Text on the testing activity to show whatever debug message there is to show
         final TextView testDisplay = findViewById(R.id.testDisplay);

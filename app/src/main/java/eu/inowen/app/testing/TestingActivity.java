@@ -3,6 +3,7 @@ package eu.inowen.app.testing;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -24,27 +25,22 @@ public class TestingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing);
 
-
-
         // Text on the testing activity to show whatever debug message there is to show
         final TextView testDisplay = findViewById(R.id.testDisplay);
+
+        // The ImageView to test showing images
+        final ImageView testImageView = findViewById(R.id.testImageView);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SubredditIterator subredditIterator = new SubredditIterator("memes", 5, Category.HOT);
-                while(subredditIterator.hasNext()) {
-                    final String title = subredditIterator.nextTitle();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            testDisplay.setText(title);
-                        }
-                    });
-                    try { Thread.sleep(1000); } catch(InterruptedException e) { e.printStackTrace(); }
-                }
+                // Download image bitmap
+
+                // Show bitmap on testImageView on UI thread
+
             }
         }).start();
+
     }
 }
 

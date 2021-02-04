@@ -1,6 +1,9 @@
 package eu.inowen.app.utils;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -37,7 +40,7 @@ public class ImageDownloader {
     }
 
     /**
-     * Download the image
+     * Download the image to disk
      * @throws IOException
      * @return Path to the name of the image in the filesystem
      */
@@ -61,6 +64,16 @@ public class ImageDownloader {
         fos.close();
 
         return destination.getAbsolutePath();
+    }
+
+    /**
+     * Download the image and return a bitmap with its content.
+     * @return Bitmap of the image, or null if it couldn't be decoded into a bitmap.
+     * @throws IOException
+     */
+    public Bitmap downloadBitmap() throws IOException {
+        URL url = new URL(urlStr);
+        return BitmapFactory.decodeStream(url.openStream());
     }
 
     /**

@@ -1,24 +1,23 @@
 package eu.inowen.app.testing;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import eu.inowen.app.R;
 import eu.inowen.app.reddit.SubredditIterator;
-import eu.inowen.app.reddit.SubredditPageIterator.*;
 import eu.inowen.app.utils.ImageDownloader;
 
 public class TestingActivity extends AppCompatActivity {
@@ -33,6 +32,9 @@ public class TestingActivity extends AppCompatActivity {
 
         // The ImageView to test showing images
         final ImageView testImageView = findViewById(R.id.testImageView);
+
+        // The ViewPager to swipe through images
+        final ViewPager2 viewPager = findViewById(R.id.testViewPager);
 
         new Thread(new Runnable() {
             @Override
@@ -64,6 +66,41 @@ public class TestingActivity extends AppCompatActivity {
             }
         }).start();
 
+    }
+}
+
+class ViewPagerAdapter extends PagerAdapter {
+
+    private Context context;
+    private ArrayList<Bitmap> images;
+
+    ViewPagerAdapter(Context context, ArrayList<Bitmap> images) {
+        this.context = context;
+        this.images = images;
+    }
+
+    @Override
+    public int getCount() {
+        return images.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        ImageView view = new ImageView(context);
+        view.setImageBitmap(images.get(position));
+        container.addView(view);
+        return view;
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        super.destroyItem(container, position, object);
     }
 }
 

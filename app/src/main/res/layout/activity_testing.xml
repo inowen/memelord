@@ -21,13 +21,21 @@
 
     <ImageView
         android:id="@+id/testImageView"
-        android:layout_width="393dp"
-        android:layout_height="632dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="150dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="128dp"
         android:layout_marginBottom="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/testDisplay"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/testViewPager"
+        android:layout_width="412dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

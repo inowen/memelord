@@ -2,15 +2,18 @@ package eu.inowen.app.testing;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.io.IOException;
@@ -34,37 +37,18 @@ public class TestingActivity extends AppCompatActivity {
         final ImageView testImageView = findViewById(R.id.testImageView);
 
         // The ViewPager to swipe through images
-        final ViewPager2 viewPager = findViewById(R.id.testViewPager);
+        final ViewPager viewPager = findViewById(R.id.testViewPager);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SubredditIterator subredditIterator = new SubredditIterator("memes");
+        ArrayList<Bitmap> images = new ArrayList<>();
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.main_screen_bg));
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background));
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground));
 
-                while (subredditIterator.hasNext()) {
-                    ImageDownloader imageDownloader = new ImageDownloader(subredditIterator.nextUrl(), null);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), images);
+        viewPager.setAdapter(adapter);
 
-                    // Download image bitmap
-                    Bitmap bitmap = null;
-                    try {
-                        bitmap = imageDownloader.downloadBitmap();
-                    } catch(IOException e) { e.printStackTrace(); }
-
-                    // Show bitmap on testImageView on UI thread
-                    final Bitmap finalBitmap = bitmap;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (finalBitmap != null)
-                                testImageView.setImageBitmap(finalBitmap);
-                        }
-                    });
-
-                    try { Thread.sleep(2500); } catch (InterruptedException e) { e.printStackTrace(); }
-                }
-
-            }
-        }).start();
+        images.add(BitmapFactory.decodeResource(getResources(), R.drawable.main_screen_bg));
+        adapter.notifyDataSetChanged();
 
     }
 }
@@ -100,7 +84,7 @@ class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        super.destroyItem(container, position, object);
+        container.removeView((View)object);
     }
 }
 

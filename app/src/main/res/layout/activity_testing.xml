@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/testViewPager"
         android:layout_width="412dp"
         android:layout_height="461dp"

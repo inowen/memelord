@@ -30,7 +30,7 @@ public class SubredditPageIterator {
      * @param postsPerPage Limit to how many posts should be on each page
      * @param cat One of the following: HOT, RISING, NEW, TOP
      */
-    public SubredditPageIterator(String sub, int postsPerPage, Category cat) {
+    public SubredditPageIterator(String sub, int postsPerPage, ListingCategory cat) {
         this.sub = sub;
         this.limit = String.valueOf(postsPerPage);
         this.category = cat.toString();
@@ -42,7 +42,7 @@ public class SubredditPageIterator {
      * @param postsPerPage
      */
     public SubredditPageIterator(String sub, int postsPerPage) {
-        this(sub, postsPerPage, Category.HOT);
+        this(sub, postsPerPage, ListingCategory.HOT);
     }
 
     /**
@@ -144,21 +144,4 @@ public class SubredditPageIterator {
         return url;
     }
 
-
-    /**
-     * Which listing: hot, new, rising, top
-     * (values are HOT, NEW, RISING, TOP)
-     */
-    public static enum Category {
-        HOT("hot"),
-        NEW("new"),
-        RISING("rising"),
-        TOP("top");
-
-        private String stringVal; // hot, new, rising, top
-        Category(String stringVal) { this.stringVal = stringVal; }
-
-        @Override
-        public String toString() { return stringVal; }
-    }
 }

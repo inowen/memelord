@@ -21,7 +21,7 @@ import eu.inowen.app.utils.ImageDownloader;
  */
 public class BitmapBufferQueue {
 
-    private SubredditIterator subredditIterator;
+    private SubredditIterator subredditIterator; // Access only from non-ui threads
     private Queue<Bitmap> buffer = new LinkedList<>();
     private int maxSize;
     private int halfSize;

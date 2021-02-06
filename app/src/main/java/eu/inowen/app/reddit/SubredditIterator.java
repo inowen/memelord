@@ -3,7 +3,6 @@ package eu.inowen.app.reddit;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import static eu.inowen.app.reddit.SubredditPageIterator.Category;
 
 /**
  * Iterate over the posts in a subreddit.
@@ -20,7 +19,7 @@ public class SubredditIterator {
      * @param pageSize How many posts per page
      * @param cat HOT, RISING, NEW or TOP
      */
-    public SubredditIterator(String sub, int pageSize, Category cat) {
+    public SubredditIterator(String sub, int pageSize, ListingCategory cat) {
         pageIterator = new SubredditPageIterator(sub, pageSize, cat);
         currentPage = pageIterator.nextPage();
         index = 0;
@@ -31,7 +30,7 @@ public class SubredditIterator {
      * @param sub Name of the subreddit
      */
     public SubredditIterator(String sub) {
-        this(sub, 50, Category.HOT);
+        this(sub, 50, ListingCategory.HOT);
     }
 
     /**

@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -73,7 +74,10 @@ public class ImageDownloader {
      */
     public Bitmap downloadBitmap() throws IOException {
         URL url = new URL(urlStr);
-        return BitmapFactory.decodeStream(url.openStream());
+        InputStream in = url.openStream();
+        Bitmap result = BitmapFactory.decodeStream(in);
+        in.close();
+        return result;
     }
 
     /**

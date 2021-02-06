@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import eu.inowen.app.R;
+import eu.inowen.app.reddit.BitmapBufferQueue;
 import eu.inowen.app.reddit.SubredditIterator;
 import eu.inowen.app.utils.ImageDownloader;
 
@@ -37,6 +38,8 @@ public class TestingActivity extends AppCompatActivity {
 
         // The ImageView to test showing images
         final ImageView testImageView = findViewById(R.id.testImageView);
+
+        /*
 
         // The ViewPager to swipe through images
         final ViewPager viewPager = findViewById(R.id.testViewPager);
@@ -70,6 +73,20 @@ public class TestingActivity extends AppCompatActivity {
         images.add(BitmapFactory.decodeResource(getResources(), R.drawable.main_screen_bg));
         adapter.notifyDataSetChanged();
 
+        */
+
+        SubredditIterator subredditIterator = new SubredditIterator("memes");
+        final BitmapBufferQueue bufferQueue = new BitmapBufferQueue(subredditIterator, 4);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Bitmap bitmap = null;
+                while((bitmap = bufferQueue.next()) != null) {
+
+                }
+            }
+        }).start();
 
     }
 }

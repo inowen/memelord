@@ -75,15 +75,29 @@ public class TestingActivity extends AppCompatActivity {
 
         */
 
-        SubredditIterator subredditIterator = new SubredditIterator("memes");
-        final BitmapBufferQueue bufferQueue = new BitmapBufferQueue(subredditIterator, 4);
-
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Bitmap bitmap = null;
-                while((bitmap = bufferQueue.next()) != null) {
+                SubredditIterator subredditIterator = new SubredditIterator("memes");
+                final BitmapBufferQueue bufferQueue = new BitmapBufferQueue(subredditIterator, 4);
 
+                Bitmap bitmap = null;
+                while(true) {
+                    bitmap = bufferQueue.next();
+                    if (bitmap != null) {
+                        final Bitmap finalBitmap = bitmap;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                testImageView.setImageBitmap(finalBitmap);
+                            }
+                        });
+                        try { Thread.sleep(2000); } catch(Exception ignored) {}
+                    }
+                    else {
+                        System.out.println("The buffer returned null...");
+                        try { Thread.sleep(1500); } catch (Exception ignored) {}
+                    }
                 }
             }
         }).start();

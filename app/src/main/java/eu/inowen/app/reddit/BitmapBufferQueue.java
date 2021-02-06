@@ -7,6 +7,7 @@ import android.media.Image;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import eu.inowen.app.R;
@@ -21,7 +22,7 @@ import eu.inowen.app.utils.ImageDownloader;
 public class BitmapBufferQueue {
 
     private SubredditIterator subredditIterator;
-    private Queue<Bitmap> buffer;
+    private Queue<Bitmap> buffer = new LinkedList<>();
     private int maxSize;
     private int halfSize;
     private Thread downloaderThread;
@@ -45,12 +46,15 @@ public class BitmapBufferQueue {
 
     /**
      * The next bitmap in the buffer (or null if empty).
+     * Also launches the thread to refill the cache if less than half the size is used.
      * @return Bitmap
      */
-    public synchronized Bitmap next() { // Make this launch the refilling thread?
+    public synchronized Bitmap next() {
         if (size()<halfSize) {
             if (!downloaderThread.isAlive()) {
+                System.out.println("Debug: Launching new refill thread");
                 downloaderThread = new Thread(new RefillCache());
+                downloaderThread.start();
             }
         }
         return buffer.poll();

@@ -5,13 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".utils.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".testing.TestingActivity"></activity>
+        <activity android:name=".testing.TestingActivity" />
         <activity android:name=".gui.SettingsActivity" />
         <activity
             android:name=".gui.SuggestionsActivity"

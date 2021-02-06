@@ -9,12 +9,12 @@ public class App extends Application {
 
     private static App instance;
 
-    static {
-        instance = new App();
-    }
+    public static App getInstance() { return instance; }
 
-    public static App getInstance() {
-        return instance;
+    @Override
+    public void onCreate() {
+        instance = this;
+        super.onCreate();
     }
 
 }

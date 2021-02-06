@@ -11,6 +11,7 @@ import java.util.Queue;
 
 import eu.inowen.app.R;
 import eu.inowen.app.gui.MainMenu;
+import eu.inowen.app.utils.App;
 import eu.inowen.app.utils.ImageDownloader;
 
 /**
@@ -31,13 +32,12 @@ public class BitmapBufferQueue {
      * be decoded into images, and stores them in a buffer.
      * @param it Iterator over a subreddit.
      * @param desiredSize How long the cache queue can become.
-     * @param applicationContext Context object, only used to access resources
      */
-    public BitmapBufferQueue(SubredditIterator it, int desiredSize, Context applicationContext) {
+    public BitmapBufferQueue(SubredditIterator it, int desiredSize) {
         subredditIterator = it;
         maxSize = Math.max(desiredSize, 2);
         halfSize = maxSize/2;
-        noMoreImages = BitmapFactory.decodeResource(applicationContext.getResources(), R.drawable.end_of_buffer);
+        noMoreImages = BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.end_of_buffer);
         // Create the thread that fills the cache
         downloaderThread = new Thread(new RefillCache());
         downloaderThread.start();

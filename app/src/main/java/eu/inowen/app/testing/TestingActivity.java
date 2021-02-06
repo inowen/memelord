@@ -25,6 +25,8 @@ import eu.inowen.app.utils.ImageDownloader;
 
 public class TestingActivity extends AppCompatActivity {
 
+    int lastPosition = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +48,28 @@ public class TestingActivity extends AppCompatActivity {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), images);
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            // This one is called whenever there is a minuscule scrolling motion (multiple times per scroll!)
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                lastPosition = position;
+            }
+
+            // This one is called when the user starts or stops scrolling. Works even if it doesn't go to a new page
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                System.out.println("OnPageScrollStateChanged. Position is " + lastPosition);
+                viewPager.getCurrentItem();
+            }
+
+            // This one is only called when the pager shows a new page (doesn't count scroll attempts)
+            @Override
+            public void onPageSelected(int position) { }
+        });
 
         images.add(BitmapFactory.decodeResource(getResources(), R.drawable.main_screen_bg));
         adapter.notifyDataSetChanged();
+
 
     }
 }

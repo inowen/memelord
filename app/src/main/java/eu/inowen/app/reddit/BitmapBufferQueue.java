@@ -21,22 +21,27 @@ import eu.inowen.app.utils.ImageDownloader;
  */
 public class BitmapBufferQueue {
 
-    private SubredditIterator subredditIterator; // Access only from non-ui threads
     private Queue<Bitmap> buffer = new LinkedList<>();
     private int maxSize;
     private int halfSize;
-    private Thread downloaderThread;
     private Bitmap noMoreImages;
+
+    private String subredditName;
+    private ListingCategory listingCategory;
+    private SubredditIterator subredditIterator = null; // Access only from non-ui threads
+    private Thread downloaderThread;
 
     /**
      * A BitmapBufferQueue downloads images from the posts in a subreddit whose urls can
      * be decoded into images, and stores them in a buffer.
-     * @param it Iterator over a subreddit.
-     * @param desiredSize How long the cache queue can become.
+     * @param sub The name of the subreddit that the images should come from.
+     * @param category HOT, NEW, TOP, RISING (choose one)
+     * @param cacheSize How long the cache queue can become.
      */
-    public BitmapBufferQueue(SubredditIterator it, int desiredSize) {
-        subredditIterator = it;
-        maxSize = Math.max(desiredSize, 2);
+    public BitmapBufferQueue(String sub, ListingCategory category, int cacheSize) {
+        subredditName = sub;
+        listingCategory = category;
+        maxSize = Math.max(cacheSize, 2);
         halfSize = maxSize/2;
         noMoreImages = BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.end_of_buffer);
         // Create the thread that fills the cache
@@ -77,17 +82,28 @@ public class BitmapBufferQueue {
     private class RefillCache implements Runnable {
         @Override
         public void run() {
-            while(size() < maxSize) {
-                // Download image as bitmap
-                ImageDownloader downloader = new ImageDownloader(subredditIterator.nextUrl(), new File(""));
-                Bitmap bm = null;
-                try { bm = downloader.downloadBitmap(); } catch (IOException e) { e.printStackTrace(); }
-                // Add to buffer
-                if (bm != null) {
-                    addToBuffer(bm);
+            initializeIterator();
+            while(buffer.size()<maxSize) {
+                Bitmap addMe = null;
+                if (subredditIterator.hasNext()) {
+                    try {
+                        addMe = new ImageDownloader(subredditIterator.nextUrl(), new File("")).downloadBitmap();
+                    } catch (Exception ignored) { }
                 }
+                else { addMe = noMoreImages; }
+
+                if (addMe != null)
+                    addToBuffer(addMe);
             }
+
             System.out.println("Debug: Refill thread finished");
+        }
+
+        // If the iterator isn't already created, do that
+        private void initializeIterator() {
+            if (subredditIterator == null) {
+                subredditIterator = new SubredditIterator(subredditName, 50, listingCategory);
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import eu.inowen.app.R;
 import eu.inowen.app.reddit.BitmapBufferQueue;
+import eu.inowen.app.reddit.ListingCategory;
 import eu.inowen.app.reddit.SubredditIterator;
 import eu.inowen.app.utils.ImageDownloader;
 
@@ -75,11 +76,11 @@ public class TestingActivity extends AppCompatActivity {
 
         */
 
+        final BitmapBufferQueue bufferQueue = new BitmapBufferQueue("memes", ListingCategory.HOT, 4);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SubredditIterator subredditIterator = new SubredditIterator("memes");
-                final BitmapBufferQueue bufferQueue = new BitmapBufferQueue(subredditIterator, 4);
 
                 Bitmap bitmap = null;
                 while(true) {

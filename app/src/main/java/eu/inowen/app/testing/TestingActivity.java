@@ -76,7 +76,7 @@ public class TestingActivity extends AppCompatActivity {
 
         */
 
-        final BitmapBufferQueue bufferQueue = new BitmapBufferQueue("memes", ListingCategory.HOT, 4);
+        final BitmapBufferQueue bufferQueue = new BitmapBufferQueue("memes", ListingCategory.HOT, 20);
 
         new Thread(new Runnable() {
             @Override

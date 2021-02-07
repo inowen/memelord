@@ -57,7 +57,6 @@ public class BitmapBufferQueue {
     public synchronized Bitmap next() {
         if (size()<halfSize) {
             if (!downloaderThread.isAlive()) {
-                System.out.println("Debug: Launching new refill thread");
                 downloaderThread = new Thread(new RefillCache());
                 downloaderThread.start();
             }
@@ -95,8 +94,6 @@ public class BitmapBufferQueue {
                 if (addMe != null)
                     addToBuffer(addMe);
             }
-
-            System.out.println("Debug: Refill thread finished");
         }
 
         // If the iterator isn't already created, do that

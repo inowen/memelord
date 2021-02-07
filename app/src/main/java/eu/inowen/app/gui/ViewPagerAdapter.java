@@ -3,7 +3,6 @@ package eu.inowen.app.gui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -42,6 +41,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         this.subreddit = sub;
         this.listingCategory = category;
         bitmapBufferQueue = new BitmapBufferQueue(subreddit, listingCategory, 20);
+        associatedPager.addOnPageChangeListener(pagerDataSetUpdater);
     }
 
     @Override
@@ -81,6 +81,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         ForgetfulBitmapArray(int maxArraySize) {
             array = new ArrayList<>();
+            /* DEBUG */ array.add(noMoreScrollBack);
             this.maxArraySize = maxArraySize;
             offset = 0;
         }
@@ -110,17 +111,21 @@ public class ViewPagerAdapter extends PagerAdapter {
     ViewPager.OnPageChangeListener pagerDataSetUpdater = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrollStateChanged(int state) {
+            System.out.println("PageScrollStateChanged");
             int currentPosition = associatedPager.getCurrentItem();
             // If the array doesn't have enough cached yet:
             if (dataSet.numCached() < dataSet.maxArraySize) {
+                System.out.println("Filling forgetful array");
                 while(bitmapBufferQueue.size()>0 && dataSet.numCached()<dataSet.maxArraySize) {
                     Bitmap next = bitmapBufferQueue.next();
-                    if (next!=null)
+                    if (next!=null) {
                         dataSet.array.add(next);
+                        notifyDataSetChanged();
+                    }
                 }
             }
             // Else, If a replacement is needed:
-            else {
+            else if (currentPosition > dataSet.offset+dataSet.maxArraySize/2) {
                 Bitmap next = null;
                 while(bitmapBufferQueue.size()>0 && next==null) {
                     next = bitmapBufferQueue.next();
@@ -128,6 +133,8 @@ public class ViewPagerAdapter extends PagerAdapter {
                 if (next != null) {
                     dataSet.array.remove(0);
                     dataSet.array.add(next);
+                    dataSet.offset++;
+                    notifyDataSetChanged();
                 }
             }
         }

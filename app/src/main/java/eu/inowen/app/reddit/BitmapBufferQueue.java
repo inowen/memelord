@@ -92,7 +92,8 @@ public class BitmapBufferQueue {
                 else { addMe = noMoreImages; }
 
                 if (addMe != null)
-                    addToBuffer(addMe);
+                    if (addMe.getAllocationByteCount() <= (5<<20))
+                        addToBuffer(addMe);
             }
         }
 

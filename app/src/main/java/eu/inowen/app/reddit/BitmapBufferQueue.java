@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -26,21 +28,19 @@ public class BitmapBufferQueue {
     private int halfSize;
     private Bitmap noMoreImages;
 
-    private String subredditName;
-    private ListingCategory listingCategory;
+    private RequestSpecification requestSpecification;
     private SubredditIterator subredditIterator = null; // Access only from non-ui threads
     private Thread downloaderThread;
 
     /**
      * A BitmapBufferQueue downloads images from the posts in a subreddit whose urls can
      * be decoded into images, and stores them in a buffer.
-     * @param sub The name of the subreddit that the images should come from.
-     * @param category HOT, NEW, TOP, RISING (choose one)
+     * @param requestSpecs RequestSpecification for where images should be downloaded and
+     *                     which criteria they should meet.
      * @param cacheSize How long the cache queue can become.
      */
-    public BitmapBufferQueue(String sub, ListingCategory category, int cacheSize) {
-        subredditName = sub;
-        listingCategory = category;
+    public BitmapBufferQueue(RequestSpecification requestSpecs, int cacheSize) {
+        this.requestSpecification = requestSpecs;
         maxSize = Math.max(cacheSize, 2);
         halfSize = maxSize/2;
         noMoreImages = BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.end_of_buffer);
@@ -86,7 +86,10 @@ public class BitmapBufferQueue {
                 Bitmap addMe = null;
                 if (subredditIterator.hasNext()) {
                     try {
-                        addMe = new ImageDownloader(subredditIterator.nextUrl(), new File("")).downloadBitmap();
+                        JSONObject post = subredditIterator.nextPost();
+                        if (requestSpecification.matches(post)) {
+                            addMe = new ImageDownloader(post.getString("url"), new File("")).downloadBitmap();
+                        }
                     } catch (Exception ignored) { }
                 }
                 else { addMe = noMoreImages; }
@@ -100,7 +103,7 @@ public class BitmapBufferQueue {
         // If the iterator isn't already created, do that
         private void initializeIterator() {
             if (subredditIterator == null) {
-                subredditIterator = new SubredditIterator(subredditName, 50, listingCategory);
+                subredditIterator = new SubredditIterator(requestSpecification, 50);
             }
         }
     }

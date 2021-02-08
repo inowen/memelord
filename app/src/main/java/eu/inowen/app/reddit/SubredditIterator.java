@@ -34,6 +34,16 @@ public class SubredditIterator {
     }
 
     /**
+     * Create a SubredditIterator from RequestSpecification (only really takes
+     * ListingCategory and the subreddit name from there).
+     * @param requestSpec
+     * @param pageSize How many posts per page
+     */
+    public SubredditIterator(RequestSpecification requestSpec, int pageSize) {
+        this(requestSpec.getSubName(), pageSize, requestSpec.getListingCategory());
+    }
+
+    /**
      * Whether there is another post to iterate over (only false if the iterator has
      * reached the end of the sub).
      * @return boolean

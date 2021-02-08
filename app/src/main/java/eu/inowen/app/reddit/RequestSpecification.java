@@ -1,5 +1,8 @@
 package eu.inowen.app.reddit;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,6 +11,7 @@ public class RequestSpecification {
     private String subName;
     private ListingCategory listingCategory;
     private int minUpvotes;
+    private boolean downloadPinned = false;
     private ArrayList<String> validExtensions = new ArrayList<>(Arrays.asList(".png", ".jpg"));
 
     /**
@@ -31,6 +35,19 @@ public class RequestSpecification {
      */
     public RequestSpecification(String subName, ListingCategory listingCategory) {
         this(subName, listingCategory, 0);
+    }
+
+    /**
+     * Check whether a post qualifies for download based on this specific request.
+     * Receives a JSONObject, will check url format, upvotes, etc.
+     * @param post JSONObject
+     * @return boolean
+     */
+    public boolean matches(JSONObject post) throws JSONException {
+        boolean urlOk = hasValidExtension(post.getString("url"));
+        boolean upvotesOk = post.getInt("ups") >= minUpvotes;
+        boolean pinnedStatusOk = !post.getBoolean("pinned") || downloadPinned;
+        return urlOk && upvotesOk && pinnedStatusOk;
     }
 
     /**
@@ -66,6 +83,14 @@ public class RequestSpecification {
      */
     public boolean isValidExtension(String extension) {
         return validExtensions.contains(optAddExtensionPoint(extension));
+    }
+
+    /**
+     * By default a pinned post does not qualify for download. Can be changed here.
+     * @param allowDownloadingPinned
+     */
+    public void setAllowDownloadingPinned(boolean allowDownloadingPinned) {
+        this.downloadPinned = allowDownloadingPinned;
     }
 
     private String optAddExtensionPoint(String extension) {

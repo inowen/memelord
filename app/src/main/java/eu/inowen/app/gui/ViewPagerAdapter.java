@@ -1,5 +1,6 @@
 package eu.inowen.app.gui;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,12 +17,12 @@ import java.util.ArrayList;
 import eu.inowen.app.R;
 import eu.inowen.app.reddit.BitmapBufferQueue;
 import eu.inowen.app.reddit.ListingCategory;
+import eu.inowen.app.reddit.RequestSpecification;
 import eu.inowen.app.utils.App;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
-    private String subreddit;
-    private ListingCategory listingCategory;
+    private RequestSpecification requestSpecification;
     private BitmapBufferQueue bitmapBufferQueue;
 
     Context context;
@@ -30,17 +31,15 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     /**
      * ViewPagerAdapter is used to slide through the images on a subreddit.
-     * @param sub Name of the subreddit
-     * @param category HOT, NEW, TOP, RISING
+     * @param request RequestSpecification for what exactly should qualify for download and from where.
      * @param associatedPager Reference to the pager that this adapter works with
      * @param context Application context (getApplicationContext()).
      */
-    public ViewPagerAdapter(String sub, ListingCategory category, ViewPager associatedPager, Context context) {
+    public ViewPagerAdapter(RequestSpecification request, ViewPager associatedPager, Context context) {
         this.context = context;
         this.associatedPager = associatedPager;
-        this.subreddit = sub;
-        this.listingCategory = category;
-        bitmapBufferQueue = new BitmapBufferQueue(subreddit, listingCategory, 20);
+        this.requestSpecification = request;
+        bitmapBufferQueue = new BitmapBufferQueue(requestSpecification, 20);
         associatedPager.addOnPageChangeListener(pagerDataSetUpdater);
     }
 
@@ -111,11 +110,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     ViewPager.OnPageChangeListener pagerDataSetUpdater = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrollStateChanged(int state) {
-            System.out.println("PageScrollStateChanged");
             int currentPosition = associatedPager.getCurrentItem();
             // If the array doesn't have enough cached yet:
             if (dataSet.numCached() < dataSet.maxArraySize) {
-                System.out.println("Filling forgetful array");
                 while(bitmapBufferQueue.size()>0 && dataSet.numCached()<dataSet.maxArraySize) {
                     Bitmap next = bitmapBufferQueue.next();
                     if (next!=null) {

@@ -1,30 +1,16 @@
 package eu.inowen.app.testing;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 import eu.inowen.app.R;
 import eu.inowen.app.gui.ViewPagerAdapter;
-import eu.inowen.app.reddit.BitmapBufferQueue;
 import eu.inowen.app.reddit.ListingCategory;
-import eu.inowen.app.reddit.SubredditIterator;
-import eu.inowen.app.utils.ImageDownloader;
+import eu.inowen.app.reddit.RequestSpecification;
 
 public class TestingActivity extends AppCompatActivity {
 
@@ -42,7 +28,8 @@ public class TestingActivity extends AppCompatActivity {
         final ImageView testImageView = findViewById(R.id.testImageView);
 
         ViewPager pager = findViewById(R.id.testViewPager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter("memes", ListingCategory.HOT, pager, getApplicationContext());
+        RequestSpecification memesHot = new RequestSpecification("memes", ListingCategory.HOT);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(memesHot, pager, getApplicationContext());
         pager.setAdapter(adapter);
 
     }

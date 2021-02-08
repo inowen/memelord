@@ -32,4 +32,46 @@ public class RequestSpecification {
     public RequestSpecification(String subName, ListingCategory listingCategory) {
         this(subName, listingCategory, 0);
     }
+
+    /**
+     * Add an extension to the list of extensions that are acceptable to download an image
+     * (by default the list only contains .jpg and .png).
+     * @param extension
+     */
+    public void addValidExtension(String extension) {
+        extension = optAddExtensionPoint(extension);
+        validExtensions.add(extension);
+    }
+
+    public String getSubName() { return subName; }
+    public ListingCategory getListingCategory() { return listingCategory; }
+    public int getMinUpvotes() { return minUpvotes; }
+
+    /**
+     * Whether the given image url has an extension that matches one of the valid extensions
+     * for this request.
+     * @param url
+     * @return boolean
+     */
+    public boolean hasValidExtension(String url) {
+        String[] split = url.split("\\.");
+        return isValidExtension(split[split.length-1]);
+    }
+
+
+    /**
+     * Whether the given extension (with or without point) marks an image that might be downloaded.
+     * @param extension
+     * @return
+     */
+    public boolean isValidExtension(String extension) {
+        return validExtensions.contains(optAddExtensionPoint(extension));
+    }
+
+    private String optAddExtensionPoint(String extension) {
+        if (extension!="" && extension.charAt(0)!='.')
+            extension = "." + extension;
+        return extension;
+    }
+
 }

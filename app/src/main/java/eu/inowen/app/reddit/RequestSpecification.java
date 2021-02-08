@@ -3,10 +3,11 @@ package eu.inowen.app.reddit;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RequestSpecification {
+public class RequestSpecification implements Serializable {
 
     private String subName;
     private ListingCategory listingCategory;

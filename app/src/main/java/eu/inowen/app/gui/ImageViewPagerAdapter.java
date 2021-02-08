@@ -12,15 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import java.util.ArrayList;
 
 import eu.inowen.app.R;
 import eu.inowen.app.reddit.BitmapBufferQueue;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import eu.inowen.app.reddit.ListingCategory;
 import eu.inowen.app.reddit.RequestSpecification;
 import eu.inowen.app.utils.App;
 
-public class ViewPagerAdapter extends PagerAdapter {
+public class ImageViewPagerAdapter extends PagerAdapter {
 
     private RequestSpecification requestSpecification;
     private BitmapBufferQueue bitmapBufferQueue;
@@ -35,7 +37,7 @@ public class ViewPagerAdapter extends PagerAdapter {
      * @param associatedPager Reference to the pager that this adapter works with
      * @param context Application context (getApplicationContext()).
      */
-    public ViewPagerAdapter(RequestSpecification request, ViewPager associatedPager, Context context) {
+    public ImageViewPagerAdapter(RequestSpecification request, ViewPager associatedPager, Context context) {
         this.context = context;
         this.associatedPager = associatedPager;
         this.requestSpecification = request;

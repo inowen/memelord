@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import eu.inowen.app.R;
+import eu.inowen.app.reddit.ListingCategory;
+import eu.inowen.app.reddit.RequestSpecification;
 import eu.inowen.app.testing.TestingActivity;
 
 public class MainMenu extends AppCompatActivity {
 
+    private Button sendMemesButton;
     private Button suggestionsButton;
     private Button settingsButton;
     private Button goTestPageButton;
@@ -50,6 +53,20 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TestingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Add listener to Send Memes button
+        sendMemesButton = findViewById(R.id.send_memes_btn);
+        sendMemesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ImageScrollActivity.class);
+                RequestSpecification requestSpecification = new RequestSpecification("memes", ListingCategory.HOT, 1000);
+                Bundle b = new Bundle();
+                b.putSerializable("RequestSpecification", requestSpecification);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });

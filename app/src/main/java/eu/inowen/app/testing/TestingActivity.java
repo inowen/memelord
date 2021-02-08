@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import eu.inowen.app.R;
-import eu.inowen.app.gui.ViewPagerAdapter;
+import eu.inowen.app.gui.ImageViewPagerAdapter;
 import eu.inowen.app.reddit.ListingCategory;
 import eu.inowen.app.reddit.RequestSpecification;
 
@@ -29,7 +29,7 @@ public class TestingActivity extends AppCompatActivity {
 
         ViewPager pager = findViewById(R.id.testViewPager);
         RequestSpecification memesHot = new RequestSpecification("programmerhumor", ListingCategory.HOT, 1000);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(memesHot, pager, getApplicationContext());
+        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(memesHot, pager, getApplicationContext());
         pager.setAdapter(adapter);
 
     }

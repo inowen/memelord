@@ -76,11 +76,11 @@ public class ViewPagerAdapter extends PagerAdapter {
         private ArrayList<Bitmap> array;
         private int maxArraySize;
         private int offset;
-        private Bitmap noMoreScrollBack = BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.end_of_buffer); // Temporary, change the image!
+        private Bitmap noMoreScrollBack = BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.cant_go_left);
 
         ForgetfulBitmapArray(int maxArraySize) {
             array = new ArrayList<>();
-            /* DEBUG */ array.add(noMoreScrollBack);
+            array.add(BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.scroll_right));
             this.maxArraySize = maxArraySize;
             offset = 0;
         }

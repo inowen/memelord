@@ -28,7 +28,7 @@ public class TestingActivity extends AppCompatActivity {
         final ImageView testImageView = findViewById(R.id.testImageView);
 
         ViewPager pager = findViewById(R.id.testViewPager);
-        RequestSpecification memesHot = new RequestSpecification("memes", ListingCategory.HOT);
+        RequestSpecification memesHot = new RequestSpecification("programmerhumor", ListingCategory.HOT, 1000);
         ViewPagerAdapter adapter = new ViewPagerAdapter(memesHot, pager, getApplicationContext());
         pager.setAdapter(adapter);
 

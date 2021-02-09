@@ -20,6 +20,7 @@ public class MainMenu extends AppCompatActivity {
     private Button suggestionsButton;
     private Button settingsButton;
     private Button goTestPageButton;
+    private Button quickRequestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,16 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Add listener for Quick Request button to send user to quick request activity
+        quickRequestButton = findViewById(R.id.quick_request_btn);
+        quickRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QuickRequestActivity.class);
+            }
+        });
+
 
         ImageView logo = findViewById(R.id.memeapp);
         logo.setImageDrawable(getDrawable(R.drawable.main_screen_bg));

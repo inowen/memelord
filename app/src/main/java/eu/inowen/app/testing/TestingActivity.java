@@ -27,10 +27,5 @@ public class TestingActivity extends AppCompatActivity {
         // The ImageView to test showing images
         final ImageView testImageView = findViewById(R.id.testImageView);
 
-        ViewPager pager = findViewById(R.id.testViewPager);
-        RequestSpecification memesHot = new RequestSpecification("programmerhumor", ListingCategory.HOT, 1000);
-        ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(memesHot, pager, getApplicationContext());
-        pager.setAdapter(adapter);
-
     }
 }

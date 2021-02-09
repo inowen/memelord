@@ -23,7 +23,7 @@ public class ImageScrollActivity extends AppCompatActivity {
         if (bundle == null) {
             finish();
         }
-        RequestSpecification requestSpecification = (RequestSpecification) bundle.get("RequestSpecification");
+        RequestSpecification requestSpecification = (RequestSpecification) bundle.get(RequestSpecification.class.getSimpleName());
 
         ViewPager pager = findViewById(R.id.imageScrollViewPager);
         ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(requestSpecification, pager, getApplicationContext());

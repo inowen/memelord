@@ -65,7 +65,7 @@ public class MainMenu extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ImageScrollActivity.class);
                 RequestSpecification requestSpecification = new RequestSpecification("memes", ListingCategory.HOT, 1000);
                 Bundle b = new Bundle();
-                b.putSerializable("RequestSpecification", requestSpecification);
+                b.putSerializable(RequestSpecification.class.getSimpleName(), requestSpecification);
                 intent.putExtras(b);
                 startActivity(intent);
             }

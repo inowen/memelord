@@ -22,7 +22,7 @@
         android:id="@+id/suggestions_btn"
         android:layout_width="303dp"
         android:layout_height="61dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Suggestions"
         app:layout_constraintStart_toStartOf="@+id/send_memes_btn"
         app:layout_constraintTop_toBottomOf="@+id/send_memes_btn" />
@@ -38,16 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="412dp"
-        android:text="Here a dropdown (scroll?) with premade options buttons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/memeapp"
@@ -68,4 +58,23 @@
         android:text="testing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/quick_request_btn"
+        android:layout_width="303dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="4dp"
+        android:text="Quick Request"
+        app:layout_constraintStart_toStartOf="@+id/suggestions_btn"
+        app:layout_constraintTop_toBottomOf="@+id/suggestions_btn" />
+
+    <Button
+        android:id="@+id/favorites_btn"
+        android:layout_width="306dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="8dp"
+        android:text="favorites"
+        app:layout_constraintStart_toStartOf="@+id/quick_request_btn"
+        app:layout_constraintTop_toBottomOf="@+id/quick_request_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

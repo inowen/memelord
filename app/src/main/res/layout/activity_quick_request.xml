@@ -88,7 +88,7 @@
 
     <TextView
         android:id="@+id/upvotes_count_textview"
-        android:layout_marginStart="260dp"
+        android:layout_marginStart="270dp"
         android:textColor="@android:color/holo_blue_dark"
         android:layout_marginTop="-45dp"
         android:layout_width="90dp"

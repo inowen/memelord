@@ -77,13 +77,31 @@
         android:id="@+id/min_upvotes_textview"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/minimum_number_of_upvotes"
         android:textSize="24sp" />
 
     <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="match_parent"
+        android:id="@+id/min_upvotes_seekbar"
+        android:layout_width="256dp"
         android:layout_height="57dp" />
+
+    <TextView
+        android:id="@+id/upvotes_count_textview"
+        android:layout_marginStart="260dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginTop="-45dp"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:textSize="20sp"
+        android:text="@string/number_zero" />
+
+    <Button
+        android:id="@+id/quick_request_submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/submit"
+        android:textSize="22sp" />
 
 </LinearLayout>

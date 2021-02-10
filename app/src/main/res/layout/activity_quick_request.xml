@@ -1,28 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="eu.inowen.app.gui.QuickRequestActivity">
+    tools:context="eu.inowen.app.gui.QuickRequestActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_gravity="top">
 
     <TextView
         android:id="@+id/sub_name_textview"
         android:layout_width="301dp"
         android:layout_height="44dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
         android:text="Subreddit Name"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/inputSubredditName"
-        android:layout_width="304dp"
+        android:layout_width="329dp"
         android:layout_height="51dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="memes"
         app:layout_constraintStart_toStartOf="@+id/sub_name_textview"
         app:layout_constraintTop_toBottomOf="@+id/sub_name_textview" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/choose_listing_textview"
+        android:layout_width="307dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="48dp"
+        android:text="Choose Listing"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/inputSubredditName"
+        app:layout_constraintTop_toBottomOf="@+id/inputSubredditName" />
+
+    <RadioGroup
+        android:id="@+id/listing_category_rg"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:checkedButton="@id/hot_radio_btn">
+
+        <RadioButton
+            android:id="@+id/top_radio_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="top" />
+
+        <RadioButton
+            android:id="@+id/hot_radio_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hot" />
+
+        <RadioButton
+            android:id="@+id/new_radio_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="new" />
+
+        <RadioButton
+            android:id="@+id/rising_radio_btn"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:text="rising" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/min_upvotes_textview"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/minimum_number_of_upvotes"
+        android:textSize="24dp" />
+
+</LinearLayout>

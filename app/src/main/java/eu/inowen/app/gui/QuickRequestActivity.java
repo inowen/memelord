@@ -13,4 +13,6 @@ public class QuickRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_request);
     }
+
+
 }

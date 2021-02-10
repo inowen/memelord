@@ -64,7 +64,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ImageScrollActivity.class);
-                RequestSpecification requestSpecification = new RequestSpecification("memes", ListingCategory.HOT, 1000);
+                RequestSpecification requestSpecification = new RequestSpecification("memes", ListingCategory.HOT, 0);
                 Bundle b = new Bundle();
                 b.putSerializable(RequestSpecification.class.getSimpleName(), requestSpecification);
                 intent.putExtras(b);
@@ -78,6 +78,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), QuickRequestActivity.class);
+                startActivity(intent);
             }
         });
 

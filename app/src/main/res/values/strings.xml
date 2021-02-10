@@ -11,4 +11,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_image_scroll">ImageScrollActivity</string>
     <string name="minimum_number_of_upvotes">Minimum number of upvotes</string>
+    <string name="choose_listing">Choose Listing</string>
+    <string name="top_listing_category">top</string>
+    <string name="hot_listing_category">hot</string>
+    <string name="new_listing_category">new</string>
+    <string name="rising_listing_category">rising</string>
+    <string name="memes">memes</string>
+    <string name="subreddit_name">Subreddit Name</string>
 </resources>

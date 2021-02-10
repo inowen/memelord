@@ -15,7 +15,7 @@
         android:layout_height="44dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
-        android:text="Subreddit Name"
+        android:text="@string/subreddit_name"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="memes"
+        android:text="@string/memes"
         app:layout_constraintStart_toStartOf="@+id/sub_name_textview"
         app:layout_constraintTop_toBottomOf="@+id/sub_name_textview" />
 
@@ -36,7 +36,7 @@
         android:layout_width="307dp"
         android:layout_height="49dp"
         android:layout_marginTop="48dp"
-        android:text="Choose Listing"
+        android:text="@string/choose_listing"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/inputSubredditName"
         app:layout_constraintTop_toBottomOf="@+id/inputSubredditName" />
@@ -52,25 +52,25 @@
             android:id="@+id/top_radio_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="top" />
+            android:text="@string/top_listing_category" />
 
         <RadioButton
             android:id="@+id/hot_radio_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hot" />
+            android:text="@string/hot_listing_category" />
 
         <RadioButton
             android:id="@+id/new_radio_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="new" />
+            android:text="@string/new_listing_category" />
 
         <RadioButton
             android:id="@+id/rising_radio_btn"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
-            android:text="rising" />
+            android:text="@string/rising_listing_category" />
     </RadioGroup>
 
     <TextView
@@ -79,6 +79,11 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:text="@string/minimum_number_of_upvotes"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="57dp" />
 
 </LinearLayout>

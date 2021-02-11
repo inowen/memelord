@@ -20,4 +20,18 @@
     <string name="subreddit_name">Subreddit Name</string>
     <string name="number_zero">0</string>
     <string name="submit">Submit</string>
+    <string-array name="suggestions">
+        <item>memes</item>
+        <item>dankmemes</item>
+        <item>confidentlyincorrect</item>
+        <item>programmerhumor</item>
+        <item>me_irl</item>
+        <item>holup</item>
+        <item>madlads</item>
+        <item>Animemes</item>
+        <item>cursedcomments</item>
+        <item>CrappyDesign</item>
+        <item>funny</item>
+        <item>tecnicallythetruth</item>
+    </string-array>
 </resources>

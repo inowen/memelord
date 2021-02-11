@@ -29,7 +29,6 @@ public class SuggestionsActivity extends AppCompatActivity {
 
         GridLayout gridLayout = new GridLayout(this);
         gridLayout.setColumnCount(2);
-        gridLayout.setBackgroundColor(Color.GREEN);
         gridLayout.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
 
         for (String suggestion : suggestions) {
@@ -48,7 +47,7 @@ public class SuggestionsActivity extends AppCompatActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.TOP | Gravity.CENTER_VERTICAL;
-        params.topMargin = 10;
+        params.topMargin = 150;
 
         addContentView(scrollView, params);
     }

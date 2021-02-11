@@ -1,14 +1,18 @@
 package eu.inowen.app.testing;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +48,57 @@ public class TestingActivity extends AppCompatActivity {
         params.topMargin = 10;
         params.gravity = Gravity.TOP | Gravity.CENTER_VERTICAL;
         button.setText("Dynamic button");
-        addContentView(button, params);
+
+
+        GridLayout viewGroup = new GridLayout(this);
+        viewGroup.setOrientation(GridLayout.VERTICAL);
+        viewGroup.setAlignmentMode(GridLayout.ALIGN_MARGINS);
+        viewGroup.setColumnCount(3);
+        viewGroup.setBackgroundColor(Color.GREEN);
+        viewGroup.addView(button);
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+        viewGroup.addView(new Button(this));
+
+        addContentView(viewGroup, params);
 
         button.setOnClickListener(new MyOnClickListener(new RequestSpecification("memes", ListingCategory.HOT, 50)));
 

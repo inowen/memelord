@@ -2,9 +2,11 @@ package eu.inowen.app.testing;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,9 +37,16 @@ public class TestingActivity extends AppCompatActivity {
         // The ImageView to test showing images
         final ImageView testImageView = findViewById(R.id.testImageView);
 
-        // TESTING ADDING STUFF TO HORIZONTAL SCROLL VIEW
-        HorizontalScrollView hsv = findViewById(R.id.test_horizontal_scroll_view);
+        Button button = new Button(this);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
+        params.topMargin = 10;
+        params.gravity = Gravity.TOP | Gravity.CENTER_VERTICAL;
+        button.setText("Dynamic button");
+        addContentView(button, params);
 
+        button.setOnClickListener(new MyOnClickListener(new RequestSpecification("memes", ListingCategory.HOT, 50)));
 
     }
 

@@ -12,10 +12,11 @@
         android:id="@+id/send_memes_btn"
         android:layout_width="301dp"
         android:layout_height="68dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
         android:text="SEND MEMES"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/suggestions_btn"

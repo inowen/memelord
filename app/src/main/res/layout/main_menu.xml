@@ -12,11 +12,10 @@
         android:id="@+id/send_memes_btn"
         android:layout_width="301dp"
         android:layout_height="68dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="56dp"
         android:text="SEND MEMES"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memeapp" />
+        tools:layout_editor_absoluteY="75dp" />
 
     <Button
         android:id="@+id/suggestions_btn"
@@ -38,16 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         />
-
-    <ImageView
-        android:id="@+id/memeapp"
-        android:layout_width="279dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
 
     <Button
         android:id="@+id/testButton"

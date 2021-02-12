@@ -82,9 +82,5 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-
-        ImageView logo = findViewById(R.id.memeapp);
-        logo.setImageDrawable(getDrawable(R.drawable.main_screen_bg));
-
     }
 }

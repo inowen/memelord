@@ -20,6 +20,12 @@
     <string name="subreddit_name">Subreddit Name</string>
     <string name="number_zero">0</string>
     <string name="submit">Submit</string>
+    <string name="send_memes">SEND MEMES</string>
+    <string name="testing">testing</string>
+    <string name="settings">Settings</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="quick_request">Quick Request</string>
+    <string name="favorites">favorites</string>
     <string-array name="suggestions">
         <item>memes</item>
         <item>dankmemes</item>

@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp"
     tools:context=".gui.MainMenu"
     android:background="@drawable/main_screen_bg"
+    android:orientation="vertical"
     >
 
     <Button
         android:id="@+id/send_memes_btn"
-        android:layout_width="301dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
-        android:text="SEND MEMES"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:shadowColor="@color/colorPrimaryDark"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/send_memes"/>
 
     <Button
         android:id="@+id/suggestions_btn"
-        android:layout_width="303dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="4dp"
-        android:text="Suggestions"
-        app:layout_constraintStart_toStartOf="@+id/send_memes_btn"
-        app:layout_constraintTop_toBottomOf="@+id/send_memes_btn" />
+        android:layout_marginStart="10dp"
+        android:text="@string/suggestions"/>
 
     <Button
         android:id="@+id/settings_button"
@@ -33,9 +36,8 @@
         android:layout_height="78dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/settings"
+        android:visibility="gone"
 
         />
 
@@ -43,28 +45,25 @@
         android:id="@+id/testButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="36dp"
-        android:text="testing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="gone"
+        android:text="@string/testing"/>
 
     <Button
         android:id="@+id/quick_request_btn"
-        android:layout_width="303dp"
-        android:layout_height="62dp"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
         android:layout_marginTop="4dp"
-        android:text="Quick Request"
-        app:layout_constraintStart_toStartOf="@+id/suggestions_btn"
-        app:layout_constraintTop_toBottomOf="@+id/suggestions_btn" />
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/quick_request"/>
 
     <Button
         android:id="@+id/favorites_btn"
-        android:layout_width="306dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="8dp"
-        android:text="favorites"
-        app:layout_constraintStart_toStartOf="@+id/quick_request_btn"
-        app:layout_constraintTop_toBottomOf="@+id/quick_request_btn" />
+        android:layout_width="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="69dp"
+        android:text="@string/favorites"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

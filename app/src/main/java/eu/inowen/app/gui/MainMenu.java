@@ -83,11 +83,12 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
+        // Click listener for the button that leads to FavoritesActivity
         favoritesButton = findViewById(R.id.favorites_btn);
         favoritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
             }
         });
 

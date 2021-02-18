@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.QuickRequestActivity"></activity>
+        <activity android:name=".gui.FavoritesActivity"></activity>
+        <activity android:name=".gui.QuickRequestActivity" />
         <activity android:name=".gui.ImageScrollActivity" />
         <activity android:name=".testing.TestingActivity" />
         <activity android:name=".gui.SettingsActivity" />

@@ -21,6 +21,7 @@ public class MainMenu extends AppCompatActivity {
     private Button settingsButton;
     private Button goTestPageButton;
     private Button quickRequestButton;
+    private Button favoritesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,14 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), QuickRequestActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        favoritesButton = findViewById(R.id.favorites_btn);
+        favoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 

@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import eu.inowen.app.R;
+import eu.inowen.app.reddit.RequestSpecification;
 
 public class FavoritesActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class FavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
     }
 
 
@@ -34,9 +36,7 @@ public class FavoritesActivity extends AppCompatActivity {
     }
 }
 
-class Favorite {
-    
-}
+
 
 
 

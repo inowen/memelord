@@ -32,7 +32,6 @@ public class SuggestionsActivity extends AppCompatActivity {
         gridLayout.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
 
         for (String suggestion : suggestions) {
-            System.out.println("Adding: " + suggestion);
             Button currentBtn = new Button(this);
             RequestSpecification request = new RequestSpecification(suggestion, ListingCategory.HOT, 500);
             currentBtn.setText(suggestion);
